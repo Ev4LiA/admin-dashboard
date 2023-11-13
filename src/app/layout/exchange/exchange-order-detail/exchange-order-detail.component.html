@@ -1,0 +1,41 @@
+<div class="content">
+    <form [formGroup]="evaluateForm">
+        <div *ngFor="let book of selectedOrder.books, let idx = index"
+             formArrayName="items"
+             class="order-container">
+            <div [formGroupName]="idx" class="column-info">
+                <div class="column-item">
+                    <h3>{{ book.title }}</h3>
+                    <p>Author: {{ book.author }}</p>
+                    <p>Condition: {{ book.condition }}</p>
+                    <p>Status: {{ book.status }}</p>
+                    <p *ngIf="book.videoUrl">Video: <a [href]="book.videoUrl" target="_blank">Watch Video</a></p>
+                    <div *ngFor="let imageUrl of book.imageUrl" class="image-container"
+                        (click)="openImageModal(imageUrl)"
+                    >
+                        <img [src]="imageUrl" alt="Book Image">
+                    </div>
+                </div>
+
+                <div class="column-item">
+                    <mat-form-field>
+                        <mat-label>User Estimated Point</mat-label>
+                        <input matInput formControlName="estimated">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Evaluate Point</mat-label>
+                        <input matInput formControlName="evaluate">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </form>
+    <mat-divider></mat-divider>
+    <div class="sticky-footer">
+        <button mat-raised-button color="accent" (click)="confirmEvaluate()">Confirm</button>
+    </div>
+</div>
+
+
+
+

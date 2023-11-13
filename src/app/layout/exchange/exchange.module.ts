@@ -3,15 +3,37 @@ import { CommonModule } from '@angular/common';
 
 import { ExchangeRoutingModule } from './exchange-routing.module';
 import { ExchangeOrderListComponent } from './exchange-order-list/exchange-order-list.component';
+import { ExchangeComponent } from './exchange.component';
+import { ExchangeOrderDetailComponent } from './exchange-order-detail/exchange-order-detail.component';
+import {MatTableModule} from "@angular/material/table";
+import {SharedModule} from "../../shared/shared.module";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatButtonModule} from "@angular/material/button";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
-    ExchangeOrderListComponent
+    ExchangeOrderListComponent,
+    ExchangeComponent,
+    ExchangeOrderDetailComponent
   ],
-  imports: [
-    CommonModule,
-    ExchangeRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        ExchangeRoutingModule,
+        MatTableModule,
+        SharedModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDividerModule,
+        MatButtonModule,
+        MatProgressSpinnerModule,
+        MatDialogModule
+    ]
 })
 export class ExchangeModule { }
