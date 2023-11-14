@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../shared/auth/services/auth.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -41,9 +41,11 @@ export class LoginComponent {
 
         ).subscribe({
             next: () => {
-                interval(2000).subscribe({
+                const subscription$ = interval(2000)
+                    .subscribe({
                     next: val => this.router.navigate(['overview'])
                 })
+                setTimeout(() => subscription$.unsubscribe(), 3000)
             },
             error: error => {
                 this.isLoggingIn = false;

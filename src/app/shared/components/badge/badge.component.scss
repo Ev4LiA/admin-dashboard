@@ -1,0 +1,65 @@
+@import "src/assets/color/color-variables.scss";
+
+:host {
+    display: inline-block;
+}
+
+.badge {
+    vertical-align: middle;
+    white-space: nowrap;
+    border-radius: 12px;
+    border: solid 1px #ccc;
+
+    &.upper-badge {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 3px 6px;
+
+        &.neutral {
+            padding: 2px 5px;
+        }
+    }
+
+    &.success {
+        color: $color-apple-100;
+        fill: $color-apple-100;
+        background: $color-apple-15;
+        border-color: $color-apple-10;
+    }
+
+    &.danger {
+        color: $color-red-orange-100;
+        fill: $color-red-orange-100;
+        background: $color-red-orange-15;
+        border-color: $color-red-orange-10;
+    }
+
+    &.process {
+        color: $color-cerulean-100;
+        fill: $color-cerulean-100;
+        background: $color-cerulean-15;
+        border-color: $color-cerulean-10;
+    }
+
+    &.warning {
+        color: $color-web-orange-100;
+        fill: $color-web-orange-100;
+        background: $color-web-orange-15;
+        border-color: $color-web-orange-10;
+    }
+
+    &.undetermined {
+        color: $color-grey-650-100;
+        fill: $color-grey-650-100;
+        background: $color-grey-650-15;
+        border-color: $color-grey-650-10;
+    }
+
+    &.neutral {
+        color: $color-grey-650-100;
+        fill: $color-grey-650-100;
+        background: $color-white-100;
+        border: 1px solid $color-grey-350-100;
+    }
+}

@@ -1,46 +1,122 @@
-<mat-spinner style="margin:0 auto;" *ngIf="isLoadingData, else TableTemplate"></mat-spinner>
-<ng-template #TableTemplate>
-    <div class="example-container mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
-
-            <!-- Position Column -->
-            <ng-container matColumnDef="uuid">
-                <th mat-header-cell *matHeaderCellDef> Uuid</th>
-                <td mat-cell *matCellDef="let element">
-                    <a [routerLink]="['/exchange/exchange-order',element.uuid]" class="primary">
-                        {{element.uuid}}
-                    </a>
-                </td>
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="userId">
-                <th mat-header-cell *matHeaderCellDef> User name</th>
-                <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
-            </ng-container>
-
-            <!-- Weight Column -->
-            <ng-container matColumnDef="numberOfBook">
-                <th mat-header-cell *matHeaderCellDef> Number Of Books</th>
-                <td mat-cell *matCellDef="let element"> {{element.numberOfBook}} </td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef> Status</th>
-                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="createdAt">
-                <th mat-header-cell *matHeaderCellDef> Created Date</th>
-                <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
+<div class="course-panel">
+    <div class="header">
+        <h2 class="title">Order Exchange</h2>
     </div>
-</ng-template>
+    <div class="spinner-container" *ngIf="isLoadingData">
+        <mat-spinner></mat-spinner>
+    </div>
+    <mat-tab-group *ngIf="!isLoadingData">
+        <mat-tab label="Pending">
+            <div class="example-container mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourcePending" class="mat-elevation-z8">
+                    <ng-container matColumnDef="uuid">
+                        <th mat-header-cell *matHeaderCellDef> Uuid</th>
+                        <td mat-cell *matCellDef="let element">
+                            <a [routerLink]="['/exchange/exchange-order',element.uuid]" class="primary">
+                                {{element.uuid}}
+                            </a>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="userId">
+                        <th mat-header-cell *matHeaderCellDef> User name</th>
+                        <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="numberOfBook">
+                        <th mat-header-cell *matHeaderCellDef> Number Of Books</th>
+                        <td mat-cell *matCellDef="let element"> {{element.numberOfBook}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status</th>
+                        <td mat-cell *matCellDef="let element">
+                            <app-badge *ngIf="element.status == 'NEW'"
+                                       [type]="'success'">{{element.status}}</app-badge>
+                            <app-badge *ngIf="element.status != 'NEW'"
+                                       [type]="'process'">{{element.status}}</app-badge>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> Created Date</th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noRecord">
+                        <td mat-footer-cell *matFooterCellDef>No Order found.</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <ng-template [ngIf]="dataSourcePending.length === 0">
+                        <tr mat-footer-row *matFooterRowDef="['noRecord']"></tr>
+                    </ng-template>
+                </table>
+
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Finished">
+            <div class="example-container mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceFinished" class="mat-elevation-z8">
+                    <ng-container matColumnDef="uuid">
+                        <th mat-header-cell *matHeaderCellDef> Uuid</th>
+                        <td mat-cell *matCellDef="let element">
+                            <a [routerLink]="['/exchange/exchange-order',element.uuid]" class="primary">
+                                {{element.uuid}}
+                            </a>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="userId">
+                        <th mat-header-cell *matHeaderCellDef> User name</th>
+                        <td mat-cell *matCellDef="let element"> {{element.user.email}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="numberOfBook">
+                        <th mat-header-cell *matHeaderCellDef> Number Of Books</th>
+                        <td mat-cell *matCellDef="let element"> {{element.numberOfBook}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="status">
+                        <th mat-header-cell *matHeaderCellDef> Status</th>
+                        <td mat-cell *matCellDef="let element">
+                            <app-badge *ngIf="element.status == 'NEW'"
+                                       [type]="'success'">{{element.status}}</app-badge>
+                            <app-badge *ngIf="element.status != 'NEW'"
+                                       [type]="'process'">{{element.status}}</app-badge>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="createdAt">
+                        <th mat-header-cell *matHeaderCellDef> Created Date</th>
+                        <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="noRecord">
+                        <td mat-footer-cell *matFooterCellDef>No Order found.</td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <ng-template [ngIf]="dataSourceFinished.length === 0">
+                        <tr mat-footer-row *matFooterRowDef="['noRecord']"></tr>
+                    </ng-template>
+                </table>
+
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+
+

@@ -4,25 +4,29 @@ import {AdminExchangeService} from "../../../shared/service/admin-exchange.servi
 import {UserExchangeOrderModel} from "../helper/model/UserExchangeOrder.model";
 
 @Component({
-  selector: 'app-exchange-order-list',
-  templateUrl: './exchange-order-list.component.html',
-  styleUrls: ['./exchange-order-list.component.scss']
+    selector: 'app-exchange-order-list',
+    templateUrl: './exchange-order-list.component.html',
+    styleUrls: ['./exchange-order-list.component.scss']
 })
 export class ExchangeOrderListComponent implements OnInit {
-  isLoadingData = false;
-  dataSource: UserExchangeOrderModel[] = [];
-  displayedColumns: string[] = ['uuid', 'userId', 'numberOfBook', 'status', 'createdAt'];
+    isLoadingData = false;
+    dataSourcePending: UserExchangeOrderModel[] = [];
+    dataSourceFinished: UserExchangeOrderModel[] = [];
+    displayedColumns: string[] = ['uuid', 'userId', 'numberOfBook', 'status', 'createdAt'];
 
-  private adminService = inject(AdminExchangeService);
+    private adminService = inject(AdminExchangeService);
 
-  ngOnInit() {
-    this.isLoadingData = true;
-    this.adminService.getExchangeOrderList().subscribe({
-        next: value => {
-          this.dataSource = value;
-        },
-        error: error => console.log(error)
-      }
-    ).add(() => this.isLoadingData = false);
-  }
+    ngOnInit() {
+        this.isLoadingData = true;
+        this.adminService.getExchangeOrderList().subscribe({
+                next: value => {
+                    console.log(value);
+                    this.dataSourcePending = value.filter(order => order.status != 'CANCEL' && order.status != 'FINISH')
+                    this.dataSourceFinished = value.filter(order => order.status == 'CANCEL' || order.status == 'FINISH')
+                    ;
+                },
+                error: error => console.log(error)
+            }
+        ).add(() => this.isLoadingData = false);
+    }
 }

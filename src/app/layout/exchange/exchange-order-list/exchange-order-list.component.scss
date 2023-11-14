@@ -1,3 +1,30 @@
-.example-container {
-  padding: 20px 15px 20px 15px;
+.courses-panel {
+    max-width: 460px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+h2 {
+    font-family: "Roboto";
+}
+
+.title {
+    text-align: center;
+    margin-right: 15px;
+}
+
+.spinner-container {
+    height: 360px;
+    width: 390px;
+    position: fixed;
+}
+
+.spinner-container mat-spinner {
+    margin: 130px auto 0 auto;
 }

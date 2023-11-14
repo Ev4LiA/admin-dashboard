@@ -14,6 +14,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {MatDialogModule} from "@angular/material/dialog";
         MatDividerModule,
         MatButtonModule,
         MatProgressSpinnerModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTabsModule
     ]
 })
 export class ExchangeModule { }
