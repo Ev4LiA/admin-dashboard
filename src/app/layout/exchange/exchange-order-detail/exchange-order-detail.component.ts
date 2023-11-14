@@ -49,7 +49,7 @@ export class ExchangeOrderDetailComponent implements OnInit {
                 ]),
                 evaluate: new UntypedFormControl({
                     value: book.evaluate ? book.evaluate : book.approximatePrice,
-                    disabled: false
+                    disabled: this.selectedOrder.status != 'NEW' && this.selectedOrder.status != 'CONFIRMED'
                 }, [
                     Validators.required,
                     Validators.min(1),
