@@ -1,39 +1,119 @@
 <div class="content">
-    <form [formGroup]="evaluateForm">
-        <div *ngFor="let book of selectedOrder.books, let idx = index"
-             formArrayName="items"
-             class="order-container">
-            <div [formGroupName]="idx" class="column-info">
-                <div class="column-item">
-                    <h3>{{ book.title }}</h3>
-                    <p>Author: {{ book.author }}</p>
-                    <p>Condition: {{ book.condition }}</p>
-                    <p>Status: {{ book.status }}</p>
-                    <p *ngIf="book.videoUrl">Video: <a [href]="book.videoUrl" target="_blank">Watch Video</a></p>
-                    <div *ngFor="let imageUrl of book.imageUrl" class="image-container"
-                        (click)="openImageModal(imageUrl)"
-                    >
-                        <img [src]="imageUrl" alt="Book Image">
-                    </div>
-                </div>
-
-                <div class="column-item">
-                    <mat-form-field>
-                        <mat-label>User Estimated Point</mat-label>
-                        <input matInput formControlName="estimated">
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Evaluate Point</mat-label>
-                        <input matInput formControlName="evaluate">
-                    </mat-form-field>
-                </div>
+    <app-base-bar>
+        <app-bb-main-bar>
+            <div class="left-section page-header">
+                <div class="page-title">Order: {{selectedOrder.uuid}}</div>
+                <div class="page-description">Created At: {{selectedOrder.createdAt | date}}</div>
             </div>
-        </div>
+
+            <div class="right-section">
+                <ng-container *ngIf="selectedOrder.status == 'NEW'">
+                    <div class="action-group">
+                        <button mat-raised-button color="accent" (click)="confirmEvaluate()"
+                        >
+                            <span>Evaluate</span>
+                        </button>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="selectedOrder.status == 'CONFIRMED'">
+                    <div class="action-group">
+                        <button mat-raised-button color="accent"
+                                (click)="confirmEvaluate()"
+                                style="margin-right: 10px"
+                        >
+                            <span>Re-Evaluate</span>
+                        </button>
+                        <button mat-raised-button color="accent" (click)="confirmAddPoint()"
+                        >
+                            <span>Confirmed</span>
+                        </button>
+                    </div>
+                </ng-container>
+            </div>
+        </app-bb-main-bar>
+    </app-base-bar>
+
+    <form [formGroup]="evaluateForm">
+        <mat-card *ngFor="let book of selectedOrder.books, let idx = index"
+                  formArrayName="items">
+            <vngcls-info-container [formGroupName]="idx">
+                <div class="container-content">
+                    <vngcls-column-info>
+                        <div vnCol [hugContent]="true">
+                            <div vnGrid class="pair-item">
+                                <div vnCol="30" class="title">Title</div>
+                                <div vnCol="70" class="value">{{ book.title}}</div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div vnGrid class="pair-item">
+                                <div vnCol="30" class="title">Author</div>
+                                <div vnCol="70" class="value">{{ book.author}}</div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div vnGrid class="pair-item">
+                                <div vnCol="30" class="title">Status</div>
+                                <div vnCol="70">
+                                    <app-badge *ngIf="book.status == 'ACCEPT'" type="success"
+                                               [title]="book.status">
+                                    </app-badge>
+                                    <app-badge *ngIf="book.status == 'REJECT'" type="danger"
+                                               [title]="book.status">
+                                    </app-badge>
+                                    <app-badge *ngIf="book.status != 'ACCEPT' && book.status != 'REJECT'"
+                                               type="process"
+                                               [title]="book.status">
+                                    </app-badge>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div vnGrid class="pair-item">
+                                <div vnCol="30" class="title">Condition</div>
+                                <div vnCol="70" class="value">{{ book.condition}}</div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div vnGrid class="pair-item">
+                                <div vnCol="30" class="title">Comment</div>
+                                <div vnCol="70" class="value">{{ book.comment}}</div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div vnGrid class="pair-item" *ngIf="book.videoUrl">
+                                <div vnCol="30" class="title">Video</div>
+                                <div vnCol="70" class="value">
+                                    <a [href]="book.videoUrl" target="_blank">Watch Video</a>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div vnGrid class="pair-item">
+                                <div vnCol="30" class="title">Image</div>
+                                <div vnCol="70" class="value">
+                                    <div *ngFor="let imageUrl of book.imageUrl" class="image-container"
+                                         (click)="openImageModal(imageUrl)"
+                                    >
+                                        <img [src]="imageUrl" alt="Book Image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div vnCol [hugContent]="true">
+                            <mat-form-field vnGrid>
+                                <mat-label>User Estimated Point</mat-label>
+                                <input matInput formControlName="estimated">
+                            </mat-form-field>
+                            <mat-form-field vnGrid>
+                                <mat-label>Evaluate Point</mat-label>
+                                <input matInput formControlName="evaluate">
+                            </mat-form-field>
+                        </div>
+
+                    </vngcls-column-info>
+                </div>
+            </vngcls-info-container>
+        </mat-card>
     </form>
     <mat-divider></mat-divider>
-    <div class="sticky-footer">
-        <button mat-raised-button color="accent" (click)="confirmEvaluate()">Confirm</button>
-    </div>
+    <!--    <div class="sticky-footer">-->
+    <!--        <button mat-raised-button color="accent" (click)="confirmEvaluate()">Confirm</button>-->
+    <!--    </div>-->
 </div>
 
 

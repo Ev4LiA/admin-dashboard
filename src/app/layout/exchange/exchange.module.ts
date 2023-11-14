@@ -15,6 +15,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatTabsModule} from "@angular/material/tabs";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {MatTabsModule} from "@angular/material/tabs";
         MatButtonModule,
         MatProgressSpinnerModule,
         MatDialogModule,
-        MatTabsModule
+        MatTabsModule,
+        MatGridListModule,
+        MatCardModule
     ]
 })
 export class ExchangeModule { }

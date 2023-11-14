@@ -1,0 +1,81 @@
+@import "src/assets/color/color-variables.scss";
+
+:host {
+    display: block;
+}
+
+.info-container {
+    width: 100%;
+    border: 1px solid $color-grey-350-100;
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    //::ng-deep {
+    //  @extend .container-header;
+    //
+    //  @extend .container-content;
+    //
+    //}
+
+    ::ng-deep {
+        .container-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: $color-grey-100-100;
+            padding: 10px 20px;
+            border-bottom: 1px solid $color-grey-350-100;
+            border-radius: 5px 5px 0 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+
+            .left-section {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .right-section {
+                display: flex;
+                align-items: center;
+            }
+
+            .title {
+                font-weight: 600;
+                font-size: 17px;
+                color: $color-grey-850-100;
+                margin-bottom: 3px;
+            }
+
+            .description {
+                color: $color-grey-650-100;
+            }
+        }
+
+        .container-content {
+            overflow: hidden;
+            padding: 20px;
+
+            .content {
+                padding: 20px 0;
+            }
+        }
+
+        .content {
+            padding: 20px 0;
+        }
+
+        .pair-item {
+            margin: 10px auto;
+            .title {
+                font-weight: 600 !important;
+                font-size: 15px !important;
+            }
+
+            .value {
+                font-weight: 400 !important;
+                font-size: 15px !important;
+            }
+        }
+    }
+}
+

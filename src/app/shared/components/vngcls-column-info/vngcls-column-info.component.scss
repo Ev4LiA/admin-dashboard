@@ -1,0 +1,58 @@
+@import 'src/assets/color/color-variables.scss';
+
+:host {
+  display: block;
+}
+
+.column-info {
+  display: flex;
+  width: 100%;
+  margin: -4px 0;
+  box-sizing: border-box;
+
+  ::ng-deep {
+    .main-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: $color-grey-650-100;
+      line-height: 16px;
+      margin-bottom: 10px;
+    }
+  }
+
+
+  .title {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-grey-850-100;
+    margin-bottom: 3px;
+
+    > * {
+      vertical-align: middle;
+    }
+  }
+
+  &.row {
+    ::ng-deep > * {
+      padding: 4px 40px;
+      border-right: 1px solid $color-grey-350-100;
+
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+
+  &.column {
+    flex-direction: column;
+
+    ::ng-deep > * {
+      padding: 15px 4px;
+      border-bottom: 1px solid $color-grey-350-100;
+
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}

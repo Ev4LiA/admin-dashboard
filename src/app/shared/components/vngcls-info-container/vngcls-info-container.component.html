@@ -1,0 +1,103 @@
+<div class="info-container" [style.margin-bottom.px]="marginBottom">
+  <ng-container *ngIf="!title && !titleTemplate">
+    <ng-content></ng-content>
+  </ng-container>
+
+  <ng-container *ngIf="title || titleTemplate">
+    <ng-container *ngTemplateOutlet="collapsible ? collapseContent : defaultContent">
+    </ng-container>
+  </ng-container>
+  <!--  <ng-container *ngTemplateOutlet="infoContainerTemplate ? infoContainerTemplate.tpl : defaultTemplate">-->
+  <!--  </ng-container>-->
+</div>
+
+
+<ng-template #collapseContent>
+  <div class="container-header">
+    <div class="left-section">
+      <div>
+        <div class="title">
+          <ng-container *ngIf="title">{{title}}</ng-container>
+          <ng-container [ngTemplateOutlet]="titleTemplate"></ng-container>
+        </div>
+        <div class="description">
+          <ng-container *ngIf="description">{{description}}</ng-container>
+          <ng-container [ngTemplateOutlet]="descriptionTemplate"></ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="right-section">
+      <ng-container *ngTemplateOutlet="rightSideTemplate">
+      </ng-container>
+
+      <button vngclsIconBtn color="default" class="toggle-btn" (click)="toggleContainer()" vngclsTitle
+              titleText="Collapse content" *ngIf="collapsible && containerContentShowing">
+        <vuf-icon name="expand-sm"></vuf-icon>
+      </button>
+      <button vngclsIconBtn color="default" class="toggle-btn" (click)="toggleContainer()" vngclsTitle
+              titleText="Expand content" *ngIf="collapsible && !containerContentShowing">
+        <vuf-icon name="collapse-sm"></vuf-icon>
+      </button>
+    </div>
+  </div>
+  <div class="container-content" [@collapse]="containerContentShowing">
+    <ng-container *ngIf="content">{{content}}</ng-container>
+    <ng-container *ngTemplateOutlet="contentTemplate">
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #defaultContent>
+  <div class="container-header">
+    <div class="left-section">
+      <div>
+        <div class="title">
+          <ng-container *ngIf="title">{{title}}</ng-container>
+          <ng-container [ngTemplateOutlet]="titleTemplate"></ng-container>
+        </div>
+        <div class="description">
+          <ng-container *ngIf="description">{{description}}</ng-container>
+          <ng-container [ngTemplateOutlet]="descriptionTemplate"></ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="right-section">
+      <ng-container *ngTemplateOutlet="rightSideTemplate">
+      </ng-container>
+
+      <button vngclsIconBtn color="default" class="toggle-btn" (click)="toggleContainer()" vngclsTitle
+              titleText="Collapse content" *ngIf="collapsible && containerContentShowing">
+        <vuf-icon name="expand-sm"></vuf-icon>
+      </button>
+      <button vngclsIconBtn color="default" class="toggle-btn" (click)="toggleContainer()" vngclsTitle
+              titleText="Expand content" *ngIf="collapsible && !containerContentShowing">
+        <vuf-icon name="collapse-sm"></vuf-icon>
+      </button>
+    </div>
+  </div>
+  <div class="container-content">
+    <ng-container *ngIf="content">{{content}}</ng-container>
+    <ng-container *ngTemplateOutlet="contentTemplate">
+    </ng-container>
+  </div>
+</ng-template>
+
+<!--<ng-template #defaultTemplate>-->
+<!--  <div class="container-header action-bar">-->
+<!--    <div class="left-section">-->
+<!--      <div>-->
+<!--        <div class="title">{{title}}</div>-->
+<!--        <div class="description">{{description}}</div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="right-section icon-btn-rightmost" [class.content-hidden]="!containerContentShowing">-->
+<!--      <button vngclsIconBtn color="default" class="toggle-btn" (click)="toggleContainer()" vngclsTitle-->
+<!--              titleText="Close content">-->
+<!--        <vuf-icon name="expand-xl"></vuf-icon>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="container-content" *ngIf="containerContentShowing">-->
+<!--    {{content}}-->
+<!--  </div>-->
+<!--</ng-template>-->

@@ -1,24 +1,32 @@
-.order-container {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 20px;
-}
+@import "src/assets/color/color-variables.scss";
 
 .image-container {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
-.sticky-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
-  position: sticky;
-  bottom: 0;
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-grey-850-100;
+
+    > * {
+        vertical-align: middle;
+    }
 }
 
+.value {
+    font-size: 20px;
+    font-weight: 400;
+    color: $color-grey-600-100;
 
+    > * {
+        vertical-align: middle;
+    }
+}
+
+mat-card {
+    margin: 10px 5px;
+}
 
 
 

@@ -33,4 +33,9 @@ export class AdminExchangeService {
         let url = `/order/evaluate`;
         return this.api.post({path: this.baseUrl + url, body});
     }
+
+    adminConfirmOrder(body) {
+        let url = `/order/confirm`;
+        return this.api.post({path: this.baseUrl + url, body});
+    }
 }

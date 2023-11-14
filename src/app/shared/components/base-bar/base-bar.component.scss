@@ -1,0 +1,44 @@
+@import "src/assets/color/color-variables.scss";
+
+.base-bar {
+    position: relative;
+    background: $color-white-100;
+    border-bottom: 1px solid $color-grey-350-100;
+    box-shadow: 0 2px 10px rgba(171, 171, 171, 0.1);
+    z-index: 10;
+
+    &.sticky {
+        position: sticky;
+    }
+
+    ::ng-deep {
+
+        .right-section {
+            display: flex;
+            align-items: center;
+            height: 36px;
+            margin-left: auto;
+
+            .action-group {
+                display: inline-flex;
+                height: 36px;
+                padding-left: 15px;
+                margin-left: 15px;
+                border-left: 1px solid $color-grey-350-100;
+
+                &:first-child:not(.rightmost-btn) {
+                    border: 0;
+                }
+            }
+
+            &.icon-btn-rightmost {
+                margin-right: -8px;
+            }
+        }
+
+        .re-margin {
+            margin-top: -2px;
+            margin-bottom: -2px;
+        }
+    }
+}

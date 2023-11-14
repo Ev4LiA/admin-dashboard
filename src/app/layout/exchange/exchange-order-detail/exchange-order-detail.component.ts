@@ -1,14 +1,7 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {UserExchangeOrderModel} from "../helper/model/UserExchangeOrder.model";
-import {ActivatedRoute} from "@angular/router";
-import {
-    FormBuilder,
-    FormGroup,
-    UntypedFormArray,
-    UntypedFormControl,
-    UntypedFormGroup,
-    Validators
-} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, UntypedFormControl, UntypedFormGroup, Validators} from "@angular/forms";
 import {ImageModalComponent} from "../../../shared/components/image-modal/image-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AdminExchangeService} from "../../../shared/service/admin-exchange.service";
@@ -21,6 +14,7 @@ import {AdminExchangeService} from "../../../shared/service/admin-exchange.servi
 export class ExchangeOrderDetailComponent implements OnInit {
     selectedOrder: UserExchangeOrderModel;
     private route = inject(ActivatedRoute);
+    private router = inject(Router);
 
     // Form
     evaluateForm: UntypedFormGroup;
@@ -54,7 +48,7 @@ export class ExchangeOrderDetailComponent implements OnInit {
                     Validators.pattern('^[1-9][0-9]*$')
                 ]),
                 evaluate: new UntypedFormControl({
-                    value: book.approximatePrice,
+                    value: book.evaluate ? book.evaluate : book.approximatePrice,
                     disabled: false
                 }, [
                     Validators.required,
@@ -75,7 +69,7 @@ export class ExchangeOrderDetailComponent implements OnInit {
 
     openImageModal(imageUrl: string) {
         this.dialog.open(ImageModalComponent, {
-            data: { imageUrl: imageUrl },
+            data: {imageUrl: imageUrl},
         });
     }
 
@@ -95,6 +89,17 @@ export class ExchangeOrderDetailComponent implements OnInit {
         }
 
         this.adminExchangeService.adminEvaluateOrder(request).subscribe({
+            next: value => this.router.navigate(['exchange/exchange-list']),
+            error: err => console.log(err.message)
+        })
+    }
+
+    confirmAddPoint() {
+        let request = {
+            orderId: this.selectedOrder.uuid
+        }
+        this.adminExchangeService.adminConfirmOrder(request).subscribe({
+            next: value => this.router.navigate(['exchange/exchange-list']),
             error: err => console.log(err.message)
         })
     }

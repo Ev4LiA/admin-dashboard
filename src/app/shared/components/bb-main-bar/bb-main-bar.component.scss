@@ -1,0 +1,78 @@
+@import "src/assets/color/color-variables.scss";
+
+.main-bar {
+    //width: 100%;
+    display: flex;
+    gap: 25px;
+    padding: 10px 30px;
+
+    ::ng-deep {
+        * {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+
+        .page-header {
+            .page-title {
+                font-size: 23px;
+                font-weight: 700;
+                color: $color-royal-blue-100;
+                margin-bottom: 10px;
+
+                .badge {
+                    vertical-align: middle;
+                    margin-left: 10px;
+                }
+            }
+
+            .page-description {
+                font-size: 13px;
+                color: $color-grey-650-100;
+
+                a {
+                    font-weight: 600;
+                }
+            }
+
+            .back-action {
+                font-size: 12px;
+                font-weight: 600;
+                color: $color-grey-700-100;
+                cursor: pointer;
+
+                vuf-icon {
+                    width: 12px;
+                    height: 12px;
+                    fill: $color-grey-700-100;
+                    margin-right: 10px;
+                    vertical-align: middle;
+                }
+
+                &:hover {
+                    color: $color-grey-750-100;
+
+                    vuf-icon {
+                        fill: $color-grey-750-100;
+                    }
+                }
+            }
+
+            &.h-direction {
+                display: flex;
+                align-items: center;
+
+                .leftmost-action {
+                    margin-right: 20px;
+                }
+
+                .navigator-btn {
+                    margin: -8px;
+                }
+            }
+        }
+
+        .bulletin {
+            margin-left: auto;
+        }
+    }
+}
