@@ -10,17 +10,17 @@ export class AdminExchangeService {
     baseUrl: string;
 
     constructor(private api: ApiService) {
-        this.baseUrl = 'http://116.118.89.53:45/admin/exchange';
-        // this.baseUrl = 'http://localhost:3000/admin/exchange';
+        // this.baseUrl = 'http://116.118.89.53:45/admin/exchange';
+        this.baseUrl = 'http://localhost:3000/admin/exchange';
         console.log('Admin Service');
     }
-
-    // getUserList(): Observable<UserModel[]> {
-    //   let url = '/order/exchange';
-    //   return this.api.get({path: this.baseUrl + url});
-    // }
-    getExchangeOrderList(): Observable<UserExchangeOrderModel[]> {
-        let url = '/order';
+    getExchangeOrderList(status?: string): Observable<UserExchangeOrderModel[]> {
+        let url;
+        if (status) {
+            url = '/order?status=' + status;
+        } else {
+            url = '/order';
+        }
         return this.api.get({path: this.baseUrl + url});
     }
 

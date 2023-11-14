@@ -7,8 +7,8 @@
     </div>
     <mat-tab-group *ngIf="!isLoadingData">
         <mat-tab label="Pending">
-            <div class="example-container mat-elevation-z8">
-                <table mat-table [dataSource]="dataSourcePending" class="mat-elevation-z8">
+            <div class="table-container">
+                <table mat-table [dataSource]="dataSourcePending" class="orders-table mat-elevation-z10">
                     <ng-container matColumnDef="uuid">
                         <th mat-header-cell *matHeaderCellDef> Uuid</th>
                         <td mat-cell *matCellDef="let element">
