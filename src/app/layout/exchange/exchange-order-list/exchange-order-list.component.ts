@@ -1,8 +1,6 @@
-import {Component, ElementRef, inject, OnInit, QueryList, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
+import {Component, inject, OnInit} from '@angular/core';
 import {AdminExchangeService} from "../../../shared/service/admin-exchange.service";
 import {UserExchangeOrderModel} from "../helper/model/UserExchangeOrder.model";
-import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-exchange-order-list',

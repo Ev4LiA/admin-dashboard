@@ -1,0 +1,92 @@
+<div class="content">
+    <mat-card>
+        <vngcls-info-container>
+            <div class="container-content">
+                <vngcls-column-info>
+                    <div vnCol [hugContent]="true">
+                        <div vnGrid class="pair-item">
+                            <div vnCol="30" class="title">Title</div>
+                            <div vnCol="70" class="value">{{ selectedOldBook.virtualBook.name}}</div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div vnGrid class="pair-item">
+                            <div vnCol="30" class="title">Author</div>
+                            <div vnCol="70" class="value">{{ selectedOldBook.virtualBook.authorId}}</div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div vnGrid class="pair-item">
+                            <div vnCol="30" class="title">Condition</div>
+                            <div vnCol="70">{{selectedOldBook.condition}}</div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div vnGrid class="pair-item">
+                            <div vnCol="30" class="title">Condition Description</div>
+                            <div vnCol="70" class="value">{{ selectedOldBook.conditionDesc}}</div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <div vnGrid class="pair-item">
+                            <div vnCol="30" class="title">Point</div>
+                            <div vnCol="70" class="value">{{ selectedOldBook.point}}</div>
+                        </div>
+                    </div>
+                    <div vnCol [hugContent]="true">
+                        <div vnGrid class="pair-item">
+                            <div vnCol="30" class="title">Image</div>
+                            <div vnCol="70" class="value">
+                                <div *ngFor="let imageUrl of selectedOldBook.imageUrl" class="image-container"
+                                     (click)="openImageModal(imageUrl)"
+                                >
+                                    <img [src]="imageUrl" alt="Book Image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </vngcls-column-info>
+            </div>
+        </vngcls-info-container>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <mat-card>
+        <app-base-bar>
+            <app-bb-main-bar>
+                <div class="left-section page-header">
+                    <div class="page-title">Old Book History</div>
+                </div>
+            </app-bb-main-bar>
+        </app-base-bar>
+
+        <div class="table-container">
+            <table mat-table [dataSource]="selectedOldBook.history" class="orders-table mat-elevation-z10">
+                <ng-container matColumnDef="uuid">
+                    <th mat-header-cell *matHeaderCellDef> Uuid</th>
+                    <td mat-cell *matCellDef="let element">
+                        <a (click)="openHistoryModel(element)" class="primary">
+                            {{element.uuid}}
+                        </a>
+                    </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="oldBookUuid">
+                    <th mat-header-cell *matHeaderCellDef>Old Book Uuid</th>
+                    <td mat-cell *matCellDef="let element"> {{element.oldBookUuid}} </td>
+                </ng-container>
+
+                <!-- Virtual Book Id Column -->
+                <ng-container matColumnDef="ownerId">
+                    <th mat-header-cell *matHeaderCellDef>Owner Uuid</th>
+                    <td mat-cell *matCellDef="let element"> {{element.ownerId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="createdAt">
+                    <th mat-header-cell *matHeaderCellDef> Created Date</th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdAt | date}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </div>
+    </mat-card>
+</div>

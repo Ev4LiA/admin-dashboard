@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Hi {{data.history.oldBookUuid}}</h1>
+<div mat-dialog-content>
+    <vngcls-info-container>
+        <div class="container-content">
+            <vngcls-column-info *ngIf="data.history.isHub">
+                <div vnGrid class="pair-item">
+                    <div vnCol="30" class="title">Hub name</div>
+                    <div vnCol="70" class="value">{{ data.history.owner.name}}</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div vnGrid class="pair-item">
+                    <div vnCol="30" class="title">Description</div>
+                    <div vnCol="70">{{data.history.owner.description}}</div>
+                </div>
+                <mat-divider></mat-divider>
+                <div vnGrid class="pair-item">
+                    <div vnCol="30" class="title">Address</div>
+                    <div vnCol="70" class="value">{{ data.history.owner.address}}</div>
+                </div>
+            </vngcls-column-info>
+        </div>
+    </vngcls-info-container>
+</div>
+<!--<div mat-dialog-actions>-->
+<!--    <button mat-button (click)="onNoClick()">No Thanks</button>-->
+<!--    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>-->
+<!--</div>-->
