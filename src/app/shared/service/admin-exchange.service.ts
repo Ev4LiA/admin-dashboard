@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {Observable} from "rxjs";
 import {UserExchangeOrderModel} from "../../layout/exchange/helper/model/UserExchangeOrder.model";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -10,8 +11,7 @@ export class AdminExchangeService {
     baseUrl: string;
 
     constructor(private api: ApiService) {
-        this.baseUrl = 'http://61.28.231.221:45/admin/exchange';
-        // this.baseUrl = 'http://localhost:3000/admin/exchange';
+        this.baseUrl = environment.backendUrl + '/admin/exchange';
         console.log('Admin Service');
     }
     getExchangeOrderList(status?: string): Observable<UserExchangeOrderModel[]> {

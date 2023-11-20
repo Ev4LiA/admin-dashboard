@@ -16,6 +16,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatDialogModule} from "@angular/material/dialog";
 import { HistoryModalComponent } from './helper/history-modal/history-modal.component';
 import {MatButtonModule} from "@angular/material/button";
+import {MatTabsModule} from "@angular/material/tabs";
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {MatButtonModule} from "@angular/material/button";
         MatInputModule,
         ReactiveFormsModule,
         MatDialogModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTabsModule
     ]
 })
 export class OldBookModule { }

@@ -9,7 +9,8 @@ import {OldBookModel} from "../helper/model/OldBook.model";
 })
 export class OldBookListComponent implements OnInit {
     isLoadingData = false;
-    dataSource: OldBookModel[] = [];
+    dataSourceAtHub: OldBookModel[] = [];
+    dataSourceSold: OldBookModel[] = [];
     displayedColumns: string[] = ['uuid', 'name', 'virtualBookId', 'point'];
 
     private adminService = inject(AdminOldBookService);
@@ -18,7 +19,8 @@ export class OldBookListComponent implements OnInit {
         this.isLoadingData = true;
         this.adminService.getOldBookList().subscribe({
                 next: value => {
-                    this.dataSource = value;
+                    this.dataSourceAtHub = value.filter(item => item.isAtHub);
+                    this.dataSourceSold = value.filter(item => !item.isAtHub);
                 },
                 error: error => console.log(error)
             }
