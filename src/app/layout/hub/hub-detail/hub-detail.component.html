@@ -1,1 +1,46 @@
-<p>hub-detail works!</p>
+<mat-card>
+    <vngcls-info-container>
+        <div class="container-content">
+            <vngcls-column-info>
+                <div vnCol [hugContent]="true">
+                    <div vnGrid class="pair-item">
+                        <div vnCol="30" class="title">Title</div>
+                        <div vnCol="70" class="value">{{ selectedHub.hub}}</div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div vnGrid class="pair-item">
+                        <div vnCol="30" class="title">Author</div>
+                        <div vnCol="70" class="value">{{ selectedHub.virtualBook.authorId}}</div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div vnGrid class="pair-item">
+                        <div vnCol="30" class="title">Condition</div>
+                        <div vnCol="70">{{selectedHub.condition}}</div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div vnGrid class="pair-item">
+                        <div vnCol="30" class="title">Condition Description</div>
+                        <div vnCol="70" class="value">{{ selectedHub.conditionDesc}}</div>
+                    </div>
+                    <mat-divider></mat-divider>
+                    <div vnGrid class="pair-item">
+                        <div vnCol="30" class="title">Point</div>
+                        <div vnCol="70" class="value">{{ selectedHub.point}}</div>
+                    </div>
+                </div>
+                <div vnCol [hugContent]="true">
+                    <div vnGrid class="pair-item">
+                        <div vnCol="30" class="title">Image</div>
+                        <div vnCol="70" class="value">
+                            <div *ngFor="let imageUrl of selectedHub.imageUrl" class="image-container"
+                                 (click)="openImageModal(imageUrl)"
+                            >
+                                <img [src]="imageUrl" alt="Book Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </vngcls-column-info>
+        </div>
+    </vngcls-info-container>
+</mat-card>

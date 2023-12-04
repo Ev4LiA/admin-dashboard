@@ -1,25 +1,21 @@
 import {Injectable} from '@angular/core';
-import {
-    Router, Resolve,
-    RouterStateSnapshot,
-    ActivatedRouteSnapshot
-} from '@angular/router';
-import {Observable, of, throwError} from 'rxjs';
+import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
+import {Observable, throwError} from 'rxjs';
 import {catchError, map} from "rxjs/operators";
-import {AdminExchangeService} from "../../../../shared/service/admin-exchange.service";
+import {HubService} from "../../../../shared/service/hub.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class HubDetailResolver implements Resolve<any> {
-    constructor(private adminService: AdminExchangeService,
+    constructor(private hubService: HubService,
                 private router: Router) {
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
 
         let id: string = route.paramMap.get('id');
-        return this.adminService.getExchangeOrderDetail(id).pipe(
+        return this.hubService.getHubDetail(id).pipe(
             map((res) => {
                 if (res) {
                     return {

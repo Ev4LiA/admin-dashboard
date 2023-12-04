@@ -5,14 +5,15 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import * as moment from "moment";
 import {jwtDecode} from "jwt-decode";
 import {signOut} from "@angular/fire/auth";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   constructor(
-    private auth: AngularFireAuth
-  ) {
+    private auth: AngularFireAuth,
+    private router: Router) {
   }
 
   signIn(params: SignIn): Observable<any> {
@@ -30,6 +31,8 @@ export class AuthService {
 
   signOut() {
     // Write a sign out function
+      localStorage.clear();
+      this.router.navigate(['/login'])
   }
 
   private setSession(authResult) {

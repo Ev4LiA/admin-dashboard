@@ -17,7 +17,7 @@ const routes: Routes = [
                 data: {title: 'Admin Dashboard - Hub'}
             },
             {
-                path: '/:id',
+                path: 'hub-detail/:id',
                 component: HubDetailComponent,
                 data: {title: 'Admin Dashboard - Hub Detail'},
                 resolve: [

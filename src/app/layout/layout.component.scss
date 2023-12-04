@@ -12,6 +12,10 @@ mat-toolbar a {
     color: white;
 }
 
+mat-sidenav {
+    width: 400px;
+}
+
 .container {
     border: 1px solid $color-grey-650-20;
     height: 100vh;
@@ -19,3 +23,9 @@ mat-toolbar a {
     padding: 10px;
     margin: 25px 50px;
 }
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+

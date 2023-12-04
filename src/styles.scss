@@ -109,3 +109,31 @@ $theme: mat.define-light-theme((
 .vngcls-grid {
     display: flex;
 }
+
+//FLEX BOX ZONE
+
+.aligned--item {
+    display: flex;
+
+    &__start {
+        align-items: flex-start;
+    }
+
+    &__center {
+        align-items: center;
+    }
+
+    &__end {
+        align-items: flex-end;
+    }
+}
+
+.flex--gap {
+    &__5 {
+        gap: 5px;
+    }
+
+    &__10 {
+        gap: 10px;
+    }
+}

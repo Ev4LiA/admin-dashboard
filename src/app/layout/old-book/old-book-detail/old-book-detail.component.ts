@@ -5,6 +5,7 @@ import {ImageModalComponent} from "../../../shared/components/image-modal/image-
 import {MatDialog} from "@angular/material/dialog";
 import {HistoryModalComponent} from "../helper/history-modal/history-modal.component";
 import {OldBookHistoryModel} from "../helper/model/OldBookHistory.model";
+import {OldBookGroupModel} from "../helper/model/OldBookGroup.model";
 
 @Component({
     selector: 'app-old-book-detail',
@@ -12,7 +13,7 @@ import {OldBookHistoryModel} from "../helper/model/OldBookHistory.model";
     styleUrls: ['./old-book-detail.component.scss']
 })
 export class OldBookDetailComponent implements OnInit {
-    selectedOldBook: OldBookModel;
+    selectedOldBook: OldBookGroupModel;
     private route = inject(ActivatedRoute);
     private router = inject(Router);
 

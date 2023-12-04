@@ -4,42 +4,48 @@
             <a mat-list-item [routerLink]="'overview'">
                 Overview
             </a>
-            <a mat-list-item [routerLink]="'users'">User</a>
-            <a mat-list-item [routerLink]="'exchange'">Exchange</a>
-            <a mat-list-item [routerLink]="'books'">Books</a>
-            <a mat-list-item [routerLink]="'old-books'">Old Books</a>
-            <a mat-list-item [routerLink]="'hub'">Hub</a>
+            <a mat-list-item [routerLink]="'users'">
+                <span class="aligned--item aligned--item__center flex--gap__5">
+                    <mat-icon>person</mat-icon>
+                    User
+                </span>
+            </a>
+            <a mat-list-item [routerLink]="'exchange'">
+                <span class="aligned--item aligned--item__center flex--gap__5">
+                    <mat-icon>book_4</mat-icon>
+                    Exchange
+                </span>
+            </a>
+            <a mat-list-item [routerLink]="'books'">
+                <span class="aligned--item aligned--item__center flex--gap__5">
+                    <mat-icon>book_5</mat-icon>
+                    Books
+                </span>
+            </a>
+            <a mat-list-item [routerLink]="'old-books'">
+                <span class="aligned--item aligned--item__center flex--gap__5">
+                    <mat-icon>library_books</mat-icon>
+                    Old Books
+                </span>
+            </a>
+            <a mat-list-item [routerLink]="'hub'">
+                <span class="aligned--item aligned--item__center flex--gap__5">
+                    <mat-icon>hub</mat-icon>
+                    Hub
+                </span>
+            </a>
         </mat-nav-list>
     </mat-sidenav>
 
 
-    <mat-toolbar color="primary">
-
+    <mat-toolbar color="primary" class="toolbar">
         <button mat-icon-button (click)="sidenav.open()">
             <mat-icon>menu</mat-icon>
         </button>
 
-        <a mat-button [matMenuTriggerFor]="dropdown">
-            Screens
-        </a>
-
-        <mat-menu #dropdown>
-
-            <button mat-menu-item routerLink="/">Courses</button>
-
-            <button mat-menu-item routerLink="/about">About</button>
-
-        </mat-menu>
-
-
-        <a mat-button>
-            <mat-icon>person_add</mat-icon>
-            Register
-        </a>
-
-        <a mat-button>
+        <a (click)="signOut()" mat-button>
             <mat-icon>account_circle</mat-icon>
-            Login
+            Sign out
         </a>
 
     </mat-toolbar>

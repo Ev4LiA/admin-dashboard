@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-hub',
@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./hub.component.scss']
 })
 export class HubComponent {
-
 }
