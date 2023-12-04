@@ -1,4 +1,5 @@
 import {BookModel} from "../../../books/helper/model/Book.model";
+import {OldBookModel} from "./OldBook.model";
 
 export class OldBookGroupModel {
     uuid: string;
@@ -12,4 +13,8 @@ export class OldBookGroupModel {
     virtualBookId: string;
     virtualBook: BookModel;
     view: number
+
+    oldBook: OldBookModel[];
+
+    BookPurchaseOrder
 }

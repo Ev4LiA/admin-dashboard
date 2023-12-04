@@ -1,27 +1,40 @@
-<h1 mat-dialog-title>Hi {{data.history.oldBookUuid}}</h1>
+<h1 mat-dialog-title>History of {{data.uuid}}</h1>
 <div mat-dialog-content>
-    <vngcls-info-container>
-        <div class="container-content">
-            <vngcls-column-info *ngIf="data.history.isHub">
-                <div vnGrid class="pair-item">
-                    <div vnCol="30" class="title">Hub name</div>
-                    <div vnCol="70" class="value">{{ data.history.owner.name}}</div>
-                </div>
-                <mat-divider></mat-divider>
-                <div vnGrid class="pair-item">
-                    <div vnCol="30" class="title">Description</div>
-                    <div vnCol="70">{{data.history.owner.description}}</div>
-                </div>
-                <mat-divider></mat-divider>
-                <div vnGrid class="pair-item">
-                    <div vnCol="30" class="title">Address</div>
-                    <div vnCol="70" class="value">{{ data.history.owner.address}}</div>
-                </div>
-            </vngcls-column-info>
-        </div>
-    </vngcls-info-container>
+    <div class="table-container">
+        <table mat-table [dataSource]="data.history" class="orders-table mat-elevation-z10">
+            <ng-container matColumnDef="uuid">
+                <th mat-header-cell *matHeaderCellDef> Uuid</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.uuid}}
+                </td>
+            </ng-container>
+
+            <!-- Owner ID Column -->
+            <ng-container matColumnDef="ownerId">
+                <th mat-header-cell *matHeaderCellDef>Owner Id</th>
+                <td mat-cell
+                    *matCellDef="let element"> {{element.ownerId}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="isAtHub">
+                <th mat-header-cell *matHeaderCellDef>Is At Hub</th>
+                <td mat-cell
+                    *matCellDef="let element"> {{element.isHub}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="createdAt">
+                <th mat-header-cell *matHeaderCellDef>Created At</th>
+                <td mat-cell *matCellDef="let element">
+                    {{element.createdAt | date}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </div>
 </div>
-<!--<div mat-dialog-actions>-->
-<!--    <button mat-button (click)="onNoClick()">No Thanks</button>-->
-<!--    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>-->
-<!--</div>-->
+<div mat-dialog-actions class="justify--content justify--content__end">
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Close</button>
+</div>

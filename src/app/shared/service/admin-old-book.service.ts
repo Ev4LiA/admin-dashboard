@@ -14,7 +14,7 @@ export class AdminOldBookService {
 
     constructor(private api: ApiService) {
         this.adminBaseUrl = environment.backendUrl + '/admin/ob';
-        this.baseUrl = 'http://61.28.231.221:45/old-book';
+        this.baseUrl = environment.backendUrl + '/old-book';
         // this.baseUrl = 'http://localhost:3000/old-book';
     }
 

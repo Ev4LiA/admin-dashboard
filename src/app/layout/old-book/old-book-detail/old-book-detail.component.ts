@@ -17,7 +17,7 @@ export class OldBookDetailComponent implements OnInit {
     private route = inject(ActivatedRoute);
     private router = inject(Router);
 
-    displayedColumns: string[] = ['uuid', 'oldBookUuid', 'ownerId', 'createdAt'];
+    displayedColumns: string[] = ['uuid', 'hubId', 'history'];
 
     constructor(private dialog: MatDialog) {
     }
@@ -32,11 +32,10 @@ export class OldBookDetailComponent implements OnInit {
         });
     }
 
-    openHistoryModel(history: OldBookHistoryModel) {
+    openHistoryModel(oldBook: OldBookModel) {
         this.dialog.open(HistoryModalComponent, {
-            height: '400px',
             width: '600px',
-            data: {history: history}
+            data: {history: oldBook.history, uuid: oldBook.uuid}
         })
     }
 }

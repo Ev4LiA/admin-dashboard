@@ -8,7 +8,7 @@ import {OldBookHistoryModel} from "../model/OldBookHistory.model";
   styleUrls: ['./history-modal.component.scss']
 })
 export class HistoryModalComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { history: OldBookHistoryModel }) {
-    console.log(data.history.owner);
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { history: OldBookHistoryModel[], uuid: string }) {
   }
+    displayedColumns: string[] = ['uuid', 'ownerId', 'isAtHub', 'createdAt'];
 }

@@ -128,6 +128,22 @@ $theme: mat.define-light-theme((
     }
 }
 
+.justify--content {
+    display: flex;
+
+    &__start {
+        justify-content: flex-start;
+    }
+
+    &__center {
+        justify-content: center;
+    }
+
+    &__end {
+        justify-content: flex-end;
+    }
+}
+
 .flex--gap {
     &__5 {
         gap: 5px;
