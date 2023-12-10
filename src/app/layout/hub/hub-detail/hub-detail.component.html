@@ -4,41 +4,30 @@
             <vngcls-column-info>
                 <div vnCol [hugContent]="true">
                     <div vnGrid class="pair-item">
-                        <div vnCol="30" class="title">Title</div>
-                        <div vnCol="70" class="value">{{ selectedHub.hub}}</div>
+                        <div vnCol="30" class="title">Hub Uuid</div>
+                        <div vnCol="70" class="value">{{ selectedHub.hub.uuid}}</div>
                     </div>
                     <mat-divider></mat-divider>
                     <div vnGrid class="pair-item">
-                        <div vnCol="30" class="title">Author</div>
-                        <div vnCol="70" class="value">{{ selectedHub.virtualBook.authorId}}</div>
+                        <div vnCol="30" class="title">Hub Name</div>
+                        <div vnCol="70" class="value">{{ selectedHub.hub.name}}</div>
                     </div>
                     <mat-divider></mat-divider>
                     <div vnGrid class="pair-item">
-                        <div vnCol="30" class="title">Condition</div>
-                        <div vnCol="70">{{selectedHub.condition}}</div>
+                        <div vnCol="30" class="title">Address</div>
+                        <div vnCol="70" class="value">{{ selectedHub.hub.address}}</div>
                     </div>
                     <mat-divider></mat-divider>
                     <div vnGrid class="pair-item">
-                        <div vnCol="30" class="title">Condition Description</div>
-                        <div vnCol="70" class="value">{{ selectedHub.conditionDesc}}</div>
+                        <div vnCol="30" class="title">Phone Number</div>
+                        <div vnCol="70">{{selectedHub.hub.phoneNumber}}</div>
                     </div>
                     <mat-divider></mat-divider>
                     <div vnGrid class="pair-item">
-                        <div vnCol="30" class="title">Point</div>
-                        <div vnCol="70" class="value">{{ selectedHub.point}}</div>
+                        <div vnCol="30" class="title">Number Of Old Book</div>
+                        <div vnCol="70" class="value">{{ selectedHub.oldBook.length}}</div>
                     </div>
-                </div>
-                <div vnCol [hugContent]="true">
-                    <div vnGrid class="pair-item">
-                        <div vnCol="30" class="title">Image</div>
-                        <div vnCol="70" class="value">
-                            <div *ngFor="let imageUrl of selectedHub.imageUrl" class="image-container"
-                                 (click)="openImageModal(imageUrl)"
-                            >
-                                <img [src]="imageUrl" alt="Book Image">
-                            </div>
-                        </div>
-                    </div>
+                    <mat-divider></mat-divider>
                 </div>
             </vngcls-column-info>
         </div>

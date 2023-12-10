@@ -15,7 +15,7 @@ import {SharedModule} from "../../shared/shared.module";
     declarations: [
         HubListComponent,
         HubComponent,
-        HubDetailComponent
+        HubDetailComponent,
     ],
     imports: [
         CommonModule,
@@ -23,7 +23,7 @@ import {SharedModule} from "../../shared/shared.module";
         MatCardModule,
         MatButtonModule,
         MatDividerModule,
-        SharedModule
+        SharedModule,
     ]
 })
 export class HubModule {
