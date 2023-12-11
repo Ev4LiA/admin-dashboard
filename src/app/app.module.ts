@@ -15,26 +15,29 @@ import firebase from "firebase/compat/app";
 import initializeApp = firebase.initializeApp;
 import {AuthService} from "./shared/auth/services/auth.service";
 import {FIREBASE_OPTIONS} from "@angular/fire/compat";
+import {HighchartsChartModule} from "highcharts-angular";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    LayoutModule,
-    SharedModule,
-    HttpClientModule
-  ],
-  providers: [AuthService,
-    { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSlideToggleModule,
+        LayoutModule,
+        SharedModule,
+        HttpClientModule,
+        HighchartsChartModule
+    ],
+    providers: [AuthService,
+        {provide: FIREBASE_OPTIONS, useValue: environment.firebase}
 
-  ],
-  bootstrap: [AppComponent]
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

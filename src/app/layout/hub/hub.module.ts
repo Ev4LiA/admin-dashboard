@@ -9,6 +9,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
 import {SharedModule} from "../../shared/shared.module";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {SharedModule} from "../../shared/shared.module";
         MatButtonModule,
         MatDividerModule,
         SharedModule,
+        MatTableModule,
     ]
 })
 export class HubModule {

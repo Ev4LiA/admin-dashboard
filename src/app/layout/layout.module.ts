@@ -20,6 +20,7 @@ import {AuthModule} from "@angular/fire/auth";
 import {FirebaseAppModule} from "@angular/fire/app";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {HighchartsChartModule} from "highcharts-angular";
 
 
 @NgModule({
@@ -27,32 +28,33 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     LayoutComponent,
     NotFoundComponent,
     OverviewComponent,
-    LoginComponent
+    LoginComponent,
   ],
   exports: [
     LayoutComponent
   ],
-  imports: [
-    ReactiveFormsModule,
-    CommonModule,
-    MatButtonModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    LayoutRoutingModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FirebaseAppModule,
-    AuthModule
-  ],
+    imports: [
+        ReactiveFormsModule,
+        CommonModule,
+        MatButtonModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        MatSnackBarModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        LayoutRoutingModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FirebaseAppModule,
+        AuthModule,
+        HighchartsChartModule
+    ],
   providers: []
 })
 export class LayoutModule { }

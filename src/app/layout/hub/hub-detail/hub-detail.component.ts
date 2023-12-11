@@ -10,6 +10,8 @@ import {HubDetailModel} from "../helper/model/HubDetail.model";
 export class HubDetailComponent implements OnInit {
     selectedHub: HubDetailModel;
     private route = inject(ActivatedRoute);
+    displayedColumns: string[] = ['uuid', 'name', 'condition', 'amount', 'point'];
+
 
     constructor() {
     }

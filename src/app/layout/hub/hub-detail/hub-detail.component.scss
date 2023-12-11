@@ -1,0 +1,13 @@
+@import "src/assets/color/color-variables.scss";
+
+.title {
+    color: $color-royal-blue-100;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.table-container {
+    margin-top: 15px;
+}
