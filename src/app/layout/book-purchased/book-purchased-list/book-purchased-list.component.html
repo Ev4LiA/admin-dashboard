@@ -1,0 +1,75 @@
+<div class="title">
+    Old Books Available in Hub
+</div>
+<div class="table-container">
+    <table mat-table [dataSource]="bookPurchaseData" class="mat-elevation-z8">
+        <ng-container matColumnDef="uuid">
+            <th mat-header-cell *matHeaderCellDef> Uuid</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.uuid}}
+            </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="userName">
+            <th mat-header-cell *matHeaderCellDef style="width: 35%">User Name</th>
+            <td mat-cell *matCellDef="let element">
+                {{element.user.userName}}
+            </td>
+        </ng-container>
+
+        <!-- status Column -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+                <ng-container [ngTemplateOutlet]="StatusBadge"
+                              [ngTemplateOutletContext]="{status: element.status}">
+                </ng-container>
+            </td>
+        </ng-container>
+
+        <!-- Amount Column -->
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell *matCellDef="let element">{{element.amount}} books</td>
+        </ng-container>
+
+        <!-- Point Column -->
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef>Created At</th>
+            <td mat-cell *matCellDef="let element">{{element.createdAt | date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="noRecord">
+            <td mat-footer-cell *matFooterCellDef>No Book Purchase found.</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <ng-template [ngIf]="bookPurchaseData.length === 0">
+            <tr mat-footer-row *matFooterRowDef="['noRecord']"></tr>
+        </ng-template>
+    </table>
+</div>
+
+<ng-template #StatusBadge let-status='status'>
+    <app-badge *ngIf="status == 'NEW'"
+               [type]="'success'"
+               [title]="status"
+    ></app-badge>
+    <app-badge *ngIf="status == 'VERY_GOOD' || status == 'READING_QUALITY'"
+               [type]="'process'"
+               [title]="status"
+    ></app-badge>
+
+    <app-badge *ngIf="status == 'FAIR'"
+               [type]="'warning'"
+               [title]="status"
+    ></app-badge>
+
+    <app-badge *ngIf="status == 'POOR'"
+               [type]="'undetermined'"
+               [title]="status"
+    ></app-badge>
+</ng-template>

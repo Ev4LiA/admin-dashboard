@@ -43,6 +43,16 @@ const routes: Routes = [
                 loadChildren: () => import('./exchange/exchange.module').then(m => m.ExchangeModule)
             },
             {
+                path: 'book-purchased',
+                canActivate: [SecureInnerPageGuard],
+                loadChildren: () => import('./book-purchased/book-purchased.module').then(m => m.BookPurchasedModule)
+            },
+            {
+                path: 'point-purchased',
+                canActivate: [SecureInnerPageGuard],
+                loadChildren: () => import('./point-purchased/point-purchased.module').then(m => m.PointPurchasedModule)
+            },
+            {
                 path: 'old-books',
                 canActivate: [SecureInnerPageGuard],
                 loadChildren: () => import('./old-book/old-book.module').then(m => m.OldBookModule)
